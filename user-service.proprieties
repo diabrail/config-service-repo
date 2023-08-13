@@ -1,5 +1,5 @@
 server.port=8084
-spring.config.import=optional:config-service:http://localhost:8085
+spring.config.import=optional:configservice:http://localhost:8085
 
 spring.datasource.url= jdbc:postgresql://localhost:5432/sencookseur_db
 spring.datasource.username= postgres
