@@ -1,0 +1,45 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sencookseurBD
+    username: postgres
+    password: diabrail
+  cloud:
+    discovery:
+      enabled: true
+    config:
+      enabled=false:
+  config:
+    import: optional:serviceconfig:http://localhost:8085
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8082/eureka
+
+cookseurpad:
+  app:
+    jwtsecret: xgEQeXHuPq8VdbyYFNkANdudQ53YUn4KEFJJDJJDnn.KADCOOKSEURPAD
+
+
+# /api-docs endpoint custom path
+springdoc:
+  api-docs:
+    path: /user-service/v3/api-docs
+  swagger-ui:
+    path: /user-service/swagger-ui.html
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: openapi, swagger-ui
+openapi:
+  service:
+    title: price-service doc
+    version: 1.0.0
+    url: http://localhost:8081/USER-SERVICE/
