@@ -1,20 +1,23 @@
 server:
-  port: 8084
+  port: 8083
 
 spring:
   application:
-    name: user-service
+    name: service-vehicule
   datasource:
-    url: jdbc:postgresql://localhost:5432/sencookseurBD
+    url: jdbc:postgresql://localhost:5432/sencookseur_db
     username: postgres
     password: diabrail
   cloud:
     discovery:
       enabled: true
     config:
-      enabled=false:
+      enabled: false
   config:
     import: optional:serviceconfig:http://localhost:8085
+    spring:
+      config:
+        import=optional:configserver:
 eureka:
   client:
     service-url:
@@ -28,9 +31,9 @@ cookseurpad:
 # /api-docs endpoint custom path
 springdoc:
   api-docs:
-    path: /user-service/v3/api-docs
+    path: /v3/api-docs
   swagger-ui:
-    path: /user-service/swagger-ui.html
+    path: /swagger-ui.html
     enabled: true
 
 management:
@@ -40,6 +43,6 @@ management:
         include: openapi, swagger-ui
 openapi:
   service:
-    title: price-service doc
+    title: service-vehicule doc
     version: 1.0.0
-    url: http://localhost:8081/USER-SERVICE/
+    url: http://localhost:8081/SERVICE-VEHICULE/
